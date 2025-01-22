@@ -27,7 +27,7 @@ class App
     $capsule->bootEloquent();
 
     spl_autoload_register(function ($class) {
-      $path = '../models/'. $class .'.php';
+      $path = '../app/models/'. $class .'.php';
       if(file_exists($path)) {
         require $path;
       }
@@ -37,14 +37,14 @@ class App
   public static function view(
     string $view, array|null $args = []
   ) {
-    $views = new TwigEnvironment(new TwigLoader('../views'));
+    $views = new TwigEnvironment(new TwigLoader('../app/views'));
     echo $views->display($view, $args);
   }
 
   public static function start($url, $method) {
     foreach(self::$routes as $route) {
       if($route["url"] === $url && $route["method"] === $method) {
-        require '../controllers/'.$route["controller"].'.php';
+        require '../app/controllers/'.$route["controller"].'.php';
       } else {
         http_response_code(404);
         echo 'Not Found.';
