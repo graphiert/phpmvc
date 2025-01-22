@@ -22,8 +22,8 @@ Access localhost on port 8000, and you will see "Hello World".
 
 ## How to modify?
 
-1. Open `bootstrap/routes.php`and modify or add the routes.
-   See accepted method on `app/Router.php`.
+1. Open `app/routes.php`and modify or add the routes.
+   See accepted method on `core/Router.php`.
 2. Create controller file on `app/controllers/` folder.
    There are no rules to write controller name as long as you know where and what this controller do.
 3. Create view file on `app/views/` folder. This project using Twig so you should know how to use Twig.
