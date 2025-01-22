@@ -24,6 +24,6 @@ App::initDatabase($sqlite_dbname);
 
 // Router initialization
 require '../core/Router.php';
-require '../bootstrap/routes.php';
+require '../app/routes.php';
 App::start($url, $method);
 
