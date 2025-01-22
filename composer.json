@@ -1,0 +1,9 @@
+{
+    "name": "graphiert/phpmvc",
+    "description": "PHP MVC App",
+    "type": "project",
+    "require": {
+        "illuminate/database": "^11.38",
+        "twig/twig": "^3.18"
+    }
+}
