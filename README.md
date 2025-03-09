@@ -7,7 +7,7 @@ Simple PHP MVC app, powered by [Eloquent](https://laravel.com/docs/eloquent), [T
 For first run, please run migrations table (and maybe the seeder).
 
 ```
-cd cli
+cd database
 php run migrate
 php run seed
 ```
