@@ -13,7 +13,7 @@ require '../vendor/autoload.php';
 require '../core/App.php';
 
 // Database preparation
-$sqlite_dbname = "../db.sqlite";
+$sqlite_dbname = "../database/db.sqlite";
 if(
   !file_exists($sqlite_dbname) || file_get_contents($sqlite_dbname) == ""
 ) {

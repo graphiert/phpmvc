@@ -1,0 +1,52 @@
+#!/usr/bin/env php
+<?php
+require "../vendor/autoload.php";
+require "../core/App.php";
+require "../core/File.php";
+
+$sqlite_dbname = "../database/db.sqlite";
+
+if (count($argv) == 1) {
+  echo "No command specified." . PHP_EOL;
+  exit();
+} elseif ($argv[1] == "migrate") {
+  if (!File::isExists($sqlite_dbname)) {
+    File::createFile($sqlite_dbname);
+  }
+
+  App::initDatabase($sqlite_dbname);
+
+  if (File::isEmpty($sqlite_dbname)) {
+    require "../database/schema.php";
+    echo "Database successfully migrated." . PHP_EOL;
+  }
+} elseif ($argv[1] == "fresh-migrate") {
+  if (!File::isExists($sqlite_dbname)) {
+    File::removeFile($sqlite_dbname);
+    File::createFile($sqlite_dbname);
+  } else {
+    File::createFile($sqlite_dbname);
+  }
+
+  App::initDatabase($sqlite_dbname);
+
+  if (File::isEmpty($sqlite_dbname)) {
+    require "../database/schema.php";
+    echo "Database successfully migrated." . PHP_EOL;
+  }
+} elseif ($argv[1] == "seed") {
+  if (File::isExists($sqlite_dbname)) {
+    App::initDatabase($sqlite_dbname);
+    require "../database/seeder.php";
+    echo "Database successfully seeded." . PHP_EOL;
+  }
+} elseif ($argv[1] == "destroy-database") {
+  if (File::isExists($sqlite_dbname)) {
+    File::removeFile($sqlite_dbname);
+    echo "Database destroyed." . PHP_EOL;
+  }
+} else {
+  echo "No command defined." . PHP_EOL;
+  exit();
+}
+

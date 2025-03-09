@@ -5,6 +5,8 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use Twig\Loader\FilesystemLoader as TwigLoader;
 use Twig\Environment as TwigEnvironment;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class App
 {
   protected static $routes = [];
@@ -44,6 +46,7 @@ class App
   public static function start($url, $method) {
     foreach(self::$routes as $route) {
       if($route["url"] === $url && $route["method"] === $method) {
+        $request = Request::createFromGlobals();
         require '../app/controllers/'.$route["controller"].'.php';
       } else {
         http_response_code(404);

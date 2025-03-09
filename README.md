@@ -1,6 +1,6 @@
 # PHP MVC
 
-Simple PHP MVC app, powered by Eloquent and Twig.
+Simple PHP MVC app, powered by [Eloquent](https://laravel.com/docs/eloquent), [Twig](https://twig.symfony.com/doc) and [symfony/http-foundation](https://symfony.com/doc/current/components/http_foundation.html).
 
 ## How it works?
 
@@ -8,8 +8,8 @@ For first run, please run migrations table (and maybe the seeder).
 
 ```
 cd cli
-php migrate.php
-php seed.php
+php run migrate
+php run seed
 ```
 
 Run this project using PHP local development server.
