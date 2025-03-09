@@ -10,18 +10,12 @@ $method = strtoupper($method);
 require '../vendor/autoload.php';
 
 // App Logic
+require '../resources/constant.php';
 require '../core/App.php';
 
 // Database preparation
-$sqlite_dbname = "../database/db.sqlite";
-if(
-  !file_exists($sqlite_dbname) || file_get_contents($sqlite_dbname) == ""
-) {
-  http_response_code(500);
-  echo "Database file not found or not migrated. Exiting...";
-  die();
-}
-App::initDatabase($sqlite_dbname);
+require '../resources/dbprep.php';
+App::initDatabase(SQLITE_PATH);
 
 // Router initialization
 require '../core/Router.php';

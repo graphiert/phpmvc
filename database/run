@@ -3,11 +3,12 @@
 require "../vendor/autoload.php";
 require "../core/App.php";
 require "../core/File.php";
+require "../resources/constant.php";
 
-$sqlite_dbname = "../database/db.sqlite";
+$sqlite_dbname = SQLITE_PATH;
 
 if (count($argv) == 1) {
-  echo "No command specified." . PHP_EOL;
+  echo "No command specified. Available commands: migrate, fresh-migrate, seed, destroy-database." . PHP_EOL;
   exit();
 } elseif ($argv[1] == "migrate") {
   if (!File::isExists($sqlite_dbname)) {
@@ -17,7 +18,7 @@ if (count($argv) == 1) {
   App::initDatabase($sqlite_dbname);
 
   if (File::isEmpty($sqlite_dbname)) {
-    require "../database/schema.php";
+    require "./schema.php";
     echo "Database successfully migrated." . PHP_EOL;
   }
 } elseif ($argv[1] == "fresh-migrate") {
@@ -31,13 +32,13 @@ if (count($argv) == 1) {
   App::initDatabase($sqlite_dbname);
 
   if (File::isEmpty($sqlite_dbname)) {
-    require "../database/schema.php";
+    require "./schema.php";
     echo "Database successfully migrated." . PHP_EOL;
   }
 } elseif ($argv[1] == "seed") {
   if (File::isExists($sqlite_dbname)) {
     App::initDatabase($sqlite_dbname);
-    require "../database/seeder.php";
+    require "./seeder.php";
     echo "Database successfully seeded." . PHP_EOL;
   }
 } elseif ($argv[1] == "destroy-database") {
@@ -46,7 +47,7 @@ if (count($argv) == 1) {
     echo "Database destroyed." . PHP_EOL;
   }
 } else {
-  echo "No command defined." . PHP_EOL;
+  echo "No command defined. Available commands: migrate, fresh-migrate, seed, destroy-database." . PHP_EOL;
   exit();
 }
 
