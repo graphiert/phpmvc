@@ -8,7 +8,8 @@ require "../resources/constant.php";
 $sqlite_dbname = SQLITE_PATH;
 
 if (count($argv) == 1) {
-  echo "No command specified. Available commands: migrate, fresh-migrate, seed, destroy-database." . PHP_EOL;
+  echo "No command specified." . PHP_EOL;
+  echo "Available commands: migrate, fresh-migrate, seed, destroy-database." . PHP_EOL;
   exit();
 } elseif ($argv[1] == "migrate") {
   if (!File::isExists($sqlite_dbname)) {
@@ -47,7 +48,8 @@ if (count($argv) == 1) {
     echo "Database destroyed." . PHP_EOL;
   }
 } else {
-  echo "No command defined. Available commands: migrate, fresh-migrate, seed, destroy-database." . PHP_EOL;
+  echo "No command defined." . PHP_EOL;
+  echo "Available commands: migrate, fresh-migrate, seed, destroy-database." . PHP_EOL;
   exit();
 }
 

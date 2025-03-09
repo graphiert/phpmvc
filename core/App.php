@@ -50,7 +50,7 @@ class App
         require '../app/controllers/'.$route["controller"].'.php';
       } else {
         http_response_code(404);
-        echo 'Not Found.';
+        require '../app/controllers/notfound.php';
       }
       die();
     }
