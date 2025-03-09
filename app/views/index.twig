@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bang keren</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to phpmvc, {{ name }}</title>
     <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-  <div class="p-4">
-    <h1 class="text-3xl font-bold">Hello {{ name }}</h1>
-    <ul class="list-disc ml-4">
-    {% for user in users %}
-      <li class="text-lg">{{ user.email }}</li>
-    {% endfor %}
-    </ul>
-  </div>
-  </body>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="text-center">
+        <h1 class="text-5xl font-extrabold text-gray-900">🚀 Welcome to phpmvc, {{ name }}</h1>
+        <p class="text-lg text-gray-600 mt-3">Your application is up and running!</p>
+        
+        <div class="mt-6">
+            <a href="https://github.com/graphiert/phpmvc" class="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700">
+                Read the Repository
+            </a>
+            <a href="/dashboard" class="ml-4 bg-gray-300 text-gray-900 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-gray-400">
+                Go to Dashboard
+            </a>
+        </div>
+
+        <p class="text-gray-500 text-sm mt-6">
+            Made with 🛌 by <a href="https://github.com/graphiert" class="text-blue-500 hover:underline">@graphiert</a>
+        </p>
+    </div>
+</body>
 </html>

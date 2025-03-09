@@ -44,16 +44,21 @@ class App
   }
 
   public static function start($url, $method) {
-    foreach(self::$routes as $route) {
-      if($route["url"] === $url && $route["method"] === $method) {
-        $request = Request::createFromGlobals();
-        require '../app/controllers/'.$route["controller"].'.php';
-      } else {
-        http_response_code(404);
-        require '../app/controllers/notfound.php';
+    $to = array_find(
+      self::$routes,
+      function (array $value) use ($url, $method) {
+        return $value["url"] == $url && $value["method"] == $method;
       }
-      die();
+    );
+
+    if($to) {
+      $superglobals = Request::createFromGlobals();
+      require '../app/controllers/'.$to["controller"].'.php';
+    } else {
+      http_response_code(404);
+      require '../app/controllers/notfound.php';
     }
+    die();
   }
 }
 

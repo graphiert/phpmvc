@@ -1,7 +1,6 @@
 <?php
 
-$name = $request->query->get('name') ?? "World";
-$users = User::latest()->get();
+$name = $superglobals->query->get('name') ?? "World";
 
-App::view('index.twig', compact('name', 'users'));
+App::view('index.twig', compact('name'));
 
