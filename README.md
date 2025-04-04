@@ -4,6 +4,12 @@ Simple PHP MVC app, powered by [Eloquent](https://laravel.com/docs/eloquent), [T
 
 ## How it works?
 
+Install all requirements via Composer
+
+```
+composer install
+```
+
 For first run, please run migrations table (and maybe the seeder).
 
 ```

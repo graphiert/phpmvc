@@ -27,4 +27,17 @@ class File
   public static function isEmpty(string $filename) {
     return file_get_contents($filename) == "";
   }
+
+  public static function recreate(string $filename) {
+    if (static::isExists($filename)) {
+      static::removeFile($filename);
+    }
+    static::createFile($filename);
+  }
+
+  public static function createIfNotExists(string $filename) {
+    if (! static::isExists($filename)) {
+      static::createFile($filename);
+    }
+  }
 }

@@ -55,7 +55,6 @@ class App
       $superglobals = Request::createFromGlobals();
       require '../app/controllers/'.$to["controller"].'.php';
     } else {
-      http_response_code(404);
       require '../app/controllers/notfound.php';
     }
     die();
