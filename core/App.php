@@ -50,12 +50,16 @@ class App
         return $value["url"] == $url && $value["method"] == $method;
       }
     );
+    $superglobals = Request::createFromGlobals();
 
-    if($to) {
-      $superglobals = Request::createFromGlobals();
-      require '../app/controllers/'.$to["controller"].'.php';
-    } else {
-      require '../app/controllers/notfound.php';
+    try {
+      if($to) {
+        require '../app/controllers/'.$to["controller"].'.php';
+      } else {
+        require '../app/controllers/notfound.php';
+      }
+    } catch(\Illuminate\Database\QueryException $ex) {
+      require '../app/controllers/dbfail.php';
     }
     die();
   }
