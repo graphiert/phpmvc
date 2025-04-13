@@ -40,7 +40,7 @@ class App
     string $view, array|null $args = []
   ) {
     $views = new TwigEnvironment(new TwigLoader('../app/views'));
-    echo $views->display($view, $args);
+    return $views->display($view, $args);
   }
 
   public static function start($url, $method) {
@@ -50,7 +50,7 @@ class App
         return $value["url"] == $url && $value["method"] == $method;
       }
     );
-    $superglobals = Request::createFromGlobals();
+    $_request = Request::createFromGlobals();
 
     try {
       if($to) {
