@@ -48,7 +48,7 @@ class App
 
   public static function start($url, $method) {
     new Run()->pushHandler(new PrettyPageHandler())->register();
-    $to = array_find(
+    $_to = array_find(
       self::$routes,
       function (array $value) use ($url, $method) {
         return $value["url"] == $url && $value["method"] == $method;
@@ -57,8 +57,8 @@ class App
     $_request = Request::createFromGlobals();
 
     try {
-      if($to) {
-        require '../app/controllers/'.$to["controller"].'.php';
+      if($_to) {
+        require '../app/controllers/'.$_to["controller"].'.php';
       } else {
         require '../app/controllers/notfound.php';
       }
