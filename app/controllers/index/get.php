@@ -1,7 +1,7 @@
 <?php
 use Symfony\Component\HttpFoundation\Response;
 
-$name = $_request->query->get('name') ?? "World";
+$name = $_request->query->get('name');
 
 new Response(
   App::view('index.twig', compact('name')),

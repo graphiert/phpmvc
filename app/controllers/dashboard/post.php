@@ -5,10 +5,6 @@ User::create([
   "email" => $_request->request->get("email")
 ]);
 
-App::view('dashboard.twig', [
-  'users' => User::all()
-]);
-
 new Response(
   App::view('dashboard.twig', [
     'users' => User::all()

@@ -61,7 +61,6 @@ class App
     } catch(\Illuminate\Database\QueryException $ex) {
       require '../app/controllers/dbfail.php';
     }
-    die();
   }
 }
 

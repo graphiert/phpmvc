@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="text-center">
-        <h1 class="text-5xl font-extrabold text-gray-900">🚀 Welcome to phpmvc, {{ name }}</h1>
+        <h1 class="text-5xl font-extrabold text-gray-900">🚀 Welcome to phpmvc{{ name ? ", " : "" }}{{ name ?? "" }}</h1>
         <p class="text-lg text-gray-600 mt-3">Your application is up and running!</p>
         
         <div class="mt-6">
