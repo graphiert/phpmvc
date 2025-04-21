@@ -5,6 +5,7 @@
     "require": {
         "illuminate/database": "^11.38",
         "twig/twig": "^3.18",
-        "symfony/http-foundation": "^7.2"
+        "symfony/http-foundation": "^7.2",
+        "filp/whoops": "^2.18"
     }
 }

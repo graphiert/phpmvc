@@ -5,6 +5,9 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use Twig\Loader\FilesystemLoader as TwigLoader;
 use Twig\Environment as TwigEnvironment;
 
+use Whoops\Run;
+use Whoops\Handler\PrettyPageHandler;
+
 use Symfony\Component\HttpFoundation\Request;
 
 class App
@@ -44,6 +47,7 @@ class App
   }
 
   public static function start($url, $method) {
+    new Run()->pushHandler(new PrettyPageHandler())->register();
     $to = array_find(
       self::$routes,
       function (array $value) use ($url, $method) {
@@ -63,4 +67,3 @@ class App
     }
   }
 }
-
